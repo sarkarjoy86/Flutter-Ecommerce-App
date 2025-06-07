@@ -61,12 +61,8 @@ class ResetPassword extends StatelessWidget {
                       child: const Text(TTexts.resendEmail))),
             ],
           ),
-
-
-
-
         ),
       ),
     );
   }
-}
+} 
