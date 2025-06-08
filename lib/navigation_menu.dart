@@ -4,6 +4,8 @@ import 'package:iconsax/iconsax.dart';
 import 'package:priyorong/utils/constants/colors.dart';
 import 'package:priyorong/utils/helpers/helper_functions.dart';
 
+import 'features/shop/screens/home/home.dart';
+
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
 
@@ -40,9 +42,7 @@ class NavigationMenu extends StatelessWidget {
 class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final screens = [
-    Container(
-      color: Colors.green,
-    ),
+    const HomeScreen(),
     Container(
       color: Colors.purple,
     ),

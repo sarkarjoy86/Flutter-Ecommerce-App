@@ -51,7 +51,7 @@ class TImages {
   static const String onBoardingImage3 = "assets/images/on_boarding_images/sammy-line-delivery.gif";
 
   // -- Products
-  static const String productImage1 = "assets/images/products/nike-shoes.png";
+  static const String productImage1 = "assets/images/products/17.png";
   static const String productImage2 = "assets/images/products/product-1.png";
   static const String productImage3 = "assets/images/products/product-jacket.png";
   static const String productImage4 = "assets/images/products/product-jeans.png";
