@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:priyorong/features/shop/screens/product_details/product_details.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/image_strings.dart';
 import '../../../utils/constants/sizes.dart';
@@ -7,7 +10,8 @@ import '../../../utils/helpers/helper_functions.dart';
 import '../../styles/shadows.dart';
 import '../circular_container_shape.dart';
 import '../icons/t_circular_icon.dart';
-import '../t_rounded_image.dart';
+import '../images/t_rounded_image.dart';
+import '../texts/brandTitleWithvarified_icon.dart';
 import '../texts/product_price_text.dart';
 import '../texts/product_title_text.dart';
 
@@ -19,7 +23,7 @@ class TProductCardVertical extends StatelessWidget {
     final dark = THelperFunctions.isDarkMode(context);
 
     return GestureDetector(
-      onTap: () {},
+      onTap: () => Get.to(() => const ProductDetailScreen()),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
@@ -78,43 +82,29 @@ class TProductCardVertical extends StatelessWidget {
                 ],
               ),
             ),
-
             const SizedBox(height: TSizes.spaceBtwItems / 3),
-
             // Product Details
-            Padding(
-              padding: const EdgeInsets.only(left: TSizes.sm, right: TSizes.sm),
+            const Padding(
+              padding: EdgeInsets.only(left: TSizes.sm, right: TSizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TProductTitleText(
+                  TProductTitleText(
                     title: 'Khadi Panjabi',
-                    smallSize: true,
+                    smallSize: false,
                     maxLines: 2,
                   ),
-                  const SizedBox(height: TSizes.spaceBtwItems / 2),
+                  SizedBox(height: TSizes.spaceBtwItems / 2),
 
                   // Brand Row
-                  Row(
-                    children: [
-                      Text(
-                        'Sultan',
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                        style: Theme.of(context).textTheme.labelMedium,
-                      ),
-                      const SizedBox(width: TSizes.xs),
-                      const Icon(
-                        Iconsax.verify5,
-                        color: TColors.primary,
-                        size: TSizes.iconXs,
-                      ),
-                    ],
-                  ),
+                  TBrandTitleWithVerifiedIcon(title: 'Sultan'),
                 ],
               ),
             ),
-            const Spacer(),            // Price & Add Button
+
+            const Spacer(),
+
+            // Price & Add Button
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -151,5 +141,7 @@ class TProductCardVertical extends StatelessWidget {
     );
   }
 }
+
+
 
 

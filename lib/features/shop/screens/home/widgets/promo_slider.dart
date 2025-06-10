@@ -5,7 +5,7 @@ import 'package:priyorong/features/shop/controllers/home_controlller.dart';
 import 'package:priyorong/utils/constants/colors.dart';
 
 import '../../../../../common/widgets/circular_container_shape.dart';
-import '../../../../../common/widgets/t_rounded_image.dart';
+import '../../../../../common/widgets/images/t_rounded_image.dart';
 import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
 

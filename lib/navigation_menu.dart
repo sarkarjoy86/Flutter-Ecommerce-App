@@ -4,7 +4,10 @@ import 'package:iconsax/iconsax.dart';
 import 'package:priyorong/utils/constants/colors.dart';
 import 'package:priyorong/utils/helpers/helper_functions.dart';
 
+import 'features/personalization/screens/settings/settings.dart';
 import 'features/shop/screens/home/home.dart';
+import 'features/shop/screens/store/store.dart';
+import 'features/shop/screens/wish_list/wishlist.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
@@ -43,14 +46,8 @@ class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final screens = [
     const HomeScreen(),
-    Container(
-      color: Colors.purple,
-    ),
-    Container(
-      color: Colors.orange,
-    ),
-    Container(
-      color: Colors.blue,
-    )
+    const StoreScreen(),
+    const FavouriteScreen(),
+    const SettingsScreen(),
   ];
 }

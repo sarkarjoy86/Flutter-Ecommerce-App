@@ -51,12 +51,12 @@ class TImages {
   static const String onBoardingImage3 = "assets/images/on_boarding_images/sammy-line-delivery.gif";
 
   // -- Products
-  static const String productImage1 = "assets/images/products/17.png";
-  static const String productImage2 = "assets/images/products/product-1.png";
-  static const String productImage3 = "assets/images/products/product-jacket.png";
-  static const String productImage4 = "assets/images/products/product-jeans.png";
-  static const String productImage5 = "assets/images/products/product-shirt.png";
-  static const String productImage6 = "assets/images/products/product-slippers.png";
+  static const String productImage1 = "assets/images/products/1.png";
+  static const String productImage2 = "assets/images/products/2.png";
+  static const String productImage3 = "assets/images/products/3.png";
+  static const String productImage4 = "assets/images/products/4.png";
+  static const String productImage5 = "assets/images/products/5.png";
+  static const String productImage6 = "assets/images/products/6.png";
   static const String productImage7 = "assets/images/products/NikeAirJOrdonBlackRed.png";
   static const String productImage8 = "assets/images/products/NikeAirJOrdonOrange.png";
   static const String productImage9 = "assets/images/products/NikeAirJordonwhiteMagenta.png";

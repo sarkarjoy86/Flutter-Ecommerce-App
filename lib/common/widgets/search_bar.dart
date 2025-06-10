@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:priyorong/utils/helpers/helper_functions.dart';
 
 import '../../utils/constants/colors.dart';
 import '../../utils/constants/sizes.dart';
@@ -9,7 +10,7 @@ class TSearchContainer extends StatelessWidget {
   const TSearchContainer({
     super.key,
     required this.text,
-    this.icon,
+    this.icon = Iconsax.search_normal,
     this.showBackground = false,
     this.showBorder = false,
     this.onTap,
@@ -22,6 +23,8 @@ class TSearchContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = THelperFunctions.isDarkMode(context);
+
     return GestureDetector(
       onTap: onTap,
       child: Padding(
@@ -30,22 +33,28 @@ class TSearchContainer extends StatelessWidget {
           width: TDeviceUtils.getScreenWidth(context),
           padding: const EdgeInsets.all(TSizes.md),
           decoration: BoxDecoration(
-            color: TColors.white,
+            color: showBackground
+                ? (dark ? TColors.dark : TColors.light)
+                : Colors.transparent,
             borderRadius: BorderRadius.circular(TSizes.cardRadiusLg),
-            border: Border.all(color: TColors.grey),
+            border: showBorder ? Border.all(color: TColors.grey) : null,
           ),
           child: Row(
             children: [
-              const Icon(Iconsax.search_normal, color: TColors.darkerGrey),
+              Icon(
+                icon,
+                color: dark ? TColors.darkerGrey : Colors.grey,
+              ),
               const SizedBox(width: TSizes.spaceBtwItems),
               Text(
-                'Search in Store',
-                style: Theme.of(context).textTheme.bodyMedium,
+                text,
+                style: Theme.of(context).textTheme.bodySmall,
               ),
             ],
           ),
         ),
       ),
     );
+
   }
 }

@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
-import 'package:priyorong/main.dart';
 import 'package:priyorong/utils/constants/colors.dart';
-import 'package:priyorong/utils/constants/enums.dart';
 import 'package:priyorong/utils/constants/sizes.dart';
 import 'package:priyorong/utils/constants/text_strings.dart';
 import 'package:priyorong/utils/helpers/helper_functions.dart';
 
 import '../../../../common/styles/spacing_styles.dart';
 import '../../../../common/widgets/social_buttons.dart';
-import '../../../../utils/constants/image_strings.dart';
 import 'widgets/login_form.dart';
 import 'widgets/login_header.dart';
 

@@ -1,29 +1,14 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:priyorong/common/widgets/home_Categories.dart';
 import 'package:priyorong/features/shop/screens/home/widgets/promo_slider.dart';
-import 'package:priyorong/utils/constants/colors.dart';
 import 'package:priyorong/utils/constants/sizes.dart';
-import 'package:priyorong/utils/device/device_utility.dart';
 
-import '../../../../common/widgets/appbar.dart';
-import '../../../../common/widgets/cart_menu_icon.dart';
-import '../../../../common/widgets/circular_container_shape.dart';
-import '../../../../common/widgets/curve_edges-widget.dart';
-import '../../../../common/widgets/curved_edges.dart';
 import '../../../../common/widgets/home_appbar.dart';
 import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/product_cards/product_card_vertical.dart';
-import '../../../../common/widgets/t_rounded_image.dart';
-import '../../../../common/widgets/vertical_image_text_widgets.dart';
 import '../../../../common/widgets/primary_header_container.dart';
 import '../../../../common/widgets/search_bar.dart';
 import '../../../../common/widgets/section_heading.dart';
-import '../../../../utils/constants/image_strings.dart';
-import '../../../../utils/constants/text_strings.dart';
-import '../../../../utils/helpers/helper_functions.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -42,7 +27,7 @@ class HomeScreen extends StatelessWidget {
 
                   /// Searchbar
                   TSearchContainer(
-                    text: 'Search in Stores',
+                    text: 'Search in Stores', showBorder: true, showBackground: true,
                   ),
                   SizedBox(height: TSizes.spaceBtwSections),
 
@@ -63,6 +48,7 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+                  SizedBox(height: TSizes.spaceBtwSections * 1.5),
                 ],
               ),
             ),

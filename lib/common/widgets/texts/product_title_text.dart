@@ -19,11 +19,11 @@ class TProductTitleText extends StatelessWidget {
     return Text(
       title,
       style: smallSize
-          ? Theme.of(context).textTheme.titleSmall?.copyWith(
-              fontWeight: FontWeight.w400,
+          ? Theme.of(context).textTheme.labelLarge?.copyWith(
+        fontWeight: FontWeight.w400,
             )
           : Theme.of(context).textTheme.titleSmall?.copyWith(
-              fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w400,
             ),
       overflow: TextOverflow.ellipsis,
       maxLines: maxLines,

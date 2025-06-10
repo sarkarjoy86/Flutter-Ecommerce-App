@@ -17,8 +17,8 @@ class THome_Categories extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (_, index) {
           return TVerticalImageText(
-            image: TImages.shoeIcon,
-            title: 'Shoes',
+            image: TImages.clothIcon,
+            title: 'Khadi Panjabi',
             onTap: () {},
           );
         },

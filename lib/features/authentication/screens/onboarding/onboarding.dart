@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:priyorong/features/authentication/controllers/onboarding_controller.dart';
 import 'package:priyorong/features/authentication/screens/onboarding/widgets/onbaording_next_button.dart';
 import 'package:priyorong/features/authentication/screens/onboarding/widgets/onboarding_dot_navigation.dart';
 import 'package:priyorong/features/authentication/screens/onboarding/widgets/onboarding_page.dart';
 import 'package:priyorong/features/authentication/screens/onboarding/widgets/onboarding_skip.dart';
-import 'package:priyorong/utils/constants/colors.dart';
 import 'package:priyorong/utils/constants/image_strings.dart';
 import 'package:priyorong/utils/constants/text_strings.dart';
 
