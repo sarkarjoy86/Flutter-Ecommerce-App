@@ -23,7 +23,7 @@ class OnBoardingNextButton extends StatelessWidget {
         onPressed: () => OnBoardingController.instance.nextPage(),
         style: ElevatedButton.styleFrom(
           shape: const CircleBorder(),
-          backgroundColor: dark ? TColors.primary : TColors.secondary,
+          backgroundColor: dark ? TColors.primary : TColors.primary,
         ),
         child: const Icon(Iconsax.arrow_right_3),
       ),

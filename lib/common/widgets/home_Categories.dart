@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:priyorong/common/widgets/vertical_image_text_widgets.dart';
+import 'package:priyorong/features/shop/screens/sub_category/sub_categories.dart';
 
 import '../../utils/constants/image_strings.dart';
 class THome_Categories extends StatelessWidget {
@@ -19,7 +22,7 @@ class THome_Categories extends StatelessWidget {
           return TVerticalImageText(
             image: TImages.clothIcon,
             title: 'Khadi Panjabi',
-            onTap: () {},
+            onTap: () => Get.to(()=> const SubCategoriesScreen()),
           );
         },
       ),

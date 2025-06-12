@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/icons/t_circular_icon.dart';
 import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/product_cards/product_card_vertical.dart';
@@ -15,8 +16,8 @@ class FavouriteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: true,
+      appBar: TAppBar(
+      showBackArrow: false,
         title: Text(
           'Wishlist',
           style: Theme.of(context).textTheme.headlineMedium,
