@@ -4,6 +4,24 @@ A modern and feature-rich e-commerce application built with Flutter, featuring a
 
 ![Flutter E-commerce App](assets/logos/logo3.png)
 
+## Try the App!
+
+🚀 **Download and Test**: You can now try out the basic design and features of our project!
+
+📱 [Download APK](https://shorturl.at/JA0yx)
+
+Current Version Features:
+- Beautiful Material Design UI
+- Smooth animations and transitions
+- Home screen with featured products
+- Category browsing
+- Product details view
+- Shopping cart interface
+- Wishlist functionality
+- Profile and settings screens
+
+We'd love to hear your feedback on the design and user experience!
+
 ## Features
 
 - 🛍️ **Product Browsing**
@@ -120,3 +138,22 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 For any queries or support, please reach out to:
 - GitHub: [@sarkarjoy86](https://github.com/sarkarjoy86)
+
+## Try the App! 🚀
+
+We're excited to share our progress! You can now test drive the basic design and features of our project.
+
+### Download
+📱 [Download Latest APK](https://shorturl.at/JA0yx)
+
+### What's Available to Try
+- Beautiful Material Design UI implementation
+- Smooth animations and transitions
+- Interactive home screen with featured products
+- Category browsing experience
+- Detailed product view pages
+- Shopping cart interface
+- Wishlist functionality
+- Profile and settings screens
+
+We welcome your feedback on the design and user experience! Feel free to open an issue or reach out directly with your thoughts.

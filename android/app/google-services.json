@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "390658496608",
+    "project_id": "ecommerceapp-c9ea3",
+    "storage_bucket": "ecommerceapp-c9ea3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390658496608:android:53b5a0a39441bcb52f0b05",
+        "android_client_info": {
+          "package_name": "com.priyorong.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "390658496608-1imm0ad4qdr2mac03qe5g01deee8t3op.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.priyorong.app",
+            "certificate_hash": "4509a5438b4477e1595ff6726ed7efb8adbe6df3"
+          }
+        },
+        {
+          "client_id": "390658496608-qr4kphocfjo4gqf9a8tke2e73lu27rdl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiJbwqO1TgojxZcybE3OIX4qo74KswD9Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "390658496608-qr4kphocfjo4gqf9a8tke2e73lu27rdl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "390658496608-jt0c99e4qso0ffab655uloa5ou6dj7b2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tStore"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
