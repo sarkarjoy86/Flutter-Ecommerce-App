@@ -130,6 +130,25 @@ lib/
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
+## Try the App! 🚀
+
+We're excited to share our progress! You can now test drive the basic design and features of our project.
+
+### Download
+📱 [Download Latest APK](https://shorturl.at/JA0yx)
+
+### What's Available to Try
+- Beautiful Material Design UI implementation
+- Smooth animations and transitions
+- Interactive home screen with featured products
+- Category browsing experience
+- Detailed product view pages
+- Shopping cart interface
+- Wishlist functionality
+- Profile and settings screens
+
+We welcome your feedback on the design and user experience! Feel free to open an issue or reach out directly with your thoughts.
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
