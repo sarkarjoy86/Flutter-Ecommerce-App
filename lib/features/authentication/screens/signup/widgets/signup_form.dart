@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:priyorong/features/authentication/screens/signup/widgets/terms_and_conditions.dart';
 import 'package:priyorong/utils/validators/validation.dart';
@@ -8,7 +7,6 @@ import 'package:priyorong/utils/validators/validation.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
 import '../../../controllers/signup_controller.dart';
-import '../../verify_emaill.dart';
 
 class SignupForm extends StatelessWidget {
   const SignupForm({
@@ -22,7 +20,7 @@ class SignupForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(SignupController());
     return Form(
-      key: controller.signupFormKey,
+        key: controller.signupFormKey,
         child: Column(
           children: [
             Row(
@@ -31,7 +29,8 @@ class SignupForm extends StatelessWidget {
                 Expanded(
                   child: TextFormField(
                     controller: controller.firstName,
-                    validator: (value) => TValidator.validateEmptyText('First Name', value),
+                    validator: (value) =>
+                        TValidator.validateEmptyText('First Name', value),
                     expands: false,
                     decoration: const InputDecoration(
                       prefixIcon: Icon(Iconsax.user),
@@ -43,7 +42,8 @@ class SignupForm extends StatelessWidget {
                 Expanded(
                   child: TextFormField(
                     controller: controller.lastName,
-                    validator: (value) => TValidator.validateEmptyText('Last Name', value),
+                    validator: (value) =>
+                        TValidator.validateEmptyText('Last Name', value),
                     expands: false,
                     decoration: const InputDecoration(
                       prefixIcon: Icon(Iconsax.user),
@@ -58,7 +58,8 @@ class SignupForm extends StatelessWidget {
             /// Username
             TextFormField(
               controller: controller.username,
-              validator: (value) => TValidator.validateEmptyText('Username', value),
+              validator: (value) =>
+                  TValidator.validateEmptyText('Username', value),
               expands: false,
               decoration: const InputDecoration(
                 prefixIcon: Icon(Iconsax.edit),
@@ -92,20 +93,29 @@ class SignupForm extends StatelessWidget {
             const SizedBox(height: TSizes.spaceBtwInputFields),
 
             /// Password
-            TextFormField(
-              controller: controller.password,
-              validator: (value) => TValidator.validatePassword( value),
-              expands: false,
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Iconsax.password_check),
-                suffixIcon: Icon(Iconsax.eye_slash),
-                labelText: TTexts.password,
+            Obx(
+              () => TextFormField(
+                controller: controller.password,
+                validator: (value) => TValidator.validatePassword(value),
+                expands: false,
+                obscureText: controller.hidePassword.value,
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Iconsax.password_check),
+                  suffixIcon: IconButton(
+                    onPressed: () => controller.hidePassword.value =
+                        !controller.hidePassword.value,
+                    icon: Icon(controller.hidePassword.value
+                        ? Iconsax.eye_slash
+                        : Iconsax.eye),
+                  ), // IconButton
+                  labelText: TTexts.password,
+                ),
               ),
             ),
             const SizedBox(height: TSizes.spaceBtwSections),
 
             /// Terms and Conditions
-            TermsAndConditions(dark: dark),
+            const TermsAndConditions(),
             const SizedBox(height: TSizes.spaceBtwSections),
 
             /// Sign Up Button

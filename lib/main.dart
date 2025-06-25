@@ -22,13 +22,19 @@ Future<void> main() async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   /// Initialize Firebase
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // -- Initialize Firebase & Authentication Repository
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  ).then(
+        (FirebaseApp value) => Get.put(AuthenticationRepository()),
+  );
+
 
   /// Todo: Initialize Network Manager
   // Get.put(NetworkManager());
 
   /// Initialize Authentication Repository
-  Get.put(AuthenticationRepository());
+  // Get.put(AuthenticationRepository());
 
   runApp(const App());
 }

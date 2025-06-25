@@ -11,7 +11,7 @@ class SuccessScreen extends StatelessWidget {
       required this.image,
       required this.title,
       required this.subtitle,
-      required this.onPressed});
+      required this.onPressed,});
 
   final String image, title, subtitle;
   final VoidCallback onPressed;

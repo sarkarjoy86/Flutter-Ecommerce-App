@@ -45,6 +45,7 @@ class TImages {
   static const String deliveredEmailIllustration = "assets/images/animations/sammy-line-man-receives-a-mail.png";
   static const String verifyIllustration = "assets/images/animations/sammy-line-travel-backpack-with-passport-and-air-ticket.gif";
   static String docerAnimation ="assets/images/animations/141594-animation-of-docer.json";
+  static var successfullyRegisterAnimation = "assets/images/animations/72462-check-register.json";
 
   // -- OnBoarding Texts
   static const String onBoardingImage1 = "assets/images/on_boarding_images/sammy-line-searching.gif";
@@ -165,6 +166,8 @@ class TImages {
   static const String paystack = "assets/icons/payment_methods/paystack.png";
   static const String paytm = "assets/icons/payment_methods/paytm.png";
   static const String successfulPaymentIcon = "assets/icons/payment_methods/successful_payment_icon.png";
+
+
 
 
 }

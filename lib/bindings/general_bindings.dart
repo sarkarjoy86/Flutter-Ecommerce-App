@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 
-import '../features/authentication/controllers/neywork_manager.dart';
- // Ensure the correct import path
+import '../utils/helpers/network_manager.dart';
 
 class GeneralBindings extends Bindings {
   @override

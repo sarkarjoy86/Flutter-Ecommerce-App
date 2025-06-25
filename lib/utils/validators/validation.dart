@@ -52,6 +52,14 @@ class TValidator {
     return null;
   }
 
+  /// Simple password validation for LOGIN (only checks if not empty)
+  static String? validateLoginPassword(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Password is required.';
+    }
+    return null;
+  }
+
   static String? validatePhoneNumber(String? value) {
     if (value == null || value.isEmpty) {
       return 'Phone number is required.';

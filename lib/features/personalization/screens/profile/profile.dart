@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:priyorong/features/personalization/screens/profile/widgets/profile_menu.dart';
 
@@ -8,12 +9,15 @@ import '../../../../common/widgets/section_heading.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../../../authentication/controllers/login_controller.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final loginController = Get.put(LoginController());
+    
     return Scaffold(
       appBar: const TAppBar(
         showBackArrow: true,
@@ -91,6 +95,27 @@ class ProfileScreen extends StatelessWidget {
                   onPressed: () {}),
               const Divider(),
               const SizedBox(height: TSizes.spaceBtwItems),
+              
+              /// Logout Button
+              Center(
+                child: SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () => loginController.logout(),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: TColors.primary,
+                      side: const BorderSide(color: TColors.primary),
+                    ),
+                    child: const Text(
+                      'Logout',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: TSizes.spaceBtwItems),
+              
+              /// Close Account Button
               Center(
                 child: TextButton(
                     onPressed: () {},

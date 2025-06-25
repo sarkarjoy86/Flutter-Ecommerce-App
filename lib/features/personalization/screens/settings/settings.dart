@@ -16,6 +16,7 @@ import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../shop/screens/order/order.dart';
 import '../address/address.dart';
+import '../../../authentication/controllers/login_controller.dart';
 
 
 class SettingsScreen extends StatelessWidget {
@@ -23,6 +24,8 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loginController = Get.put(LoginController());
+    
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -136,7 +139,7 @@ class SettingsScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () => loginController.logout(),
                       child: const Text('Logout'),
                     ),
                   ),
