@@ -6,6 +6,7 @@ import '../../../data/repositories/authentications/authentication_repository.dar
 import '../../../utils/constants/image_strings.dart';
 import '../../../utils/constants/text_strings.dart';
 import '../../../utils/popups/loaders.dart';
+import '../../personalization/controllers/user_controller.dart';
 
 
 class VerifyEmailController extends GetxController {
@@ -44,7 +45,11 @@ class VerifyEmailController extends GetxController {
               image: TImages.verifyIllustration,
               title: TTexts.yourAccountCreatedTitle,
               subtitle: TTexts.yourAccountCreatedSubTitle,
-              onPressed: () => AuthenticationRepository.instance.screenRedirect() ,
+              onPressed: () async {
+                // Refresh user data before redirecting
+                await Get.find<UserController>().fetchUserRecord();
+                AuthenticationRepository.instance.screenRedirect();
+              },
             ),
           );
         }
@@ -61,7 +66,11 @@ class VerifyEmailController extends GetxController {
           image: TImages.successfullyRegisterAnimation,
           title: TTexts.yourAccountCreatedTitle,
           subtitle: TTexts.yourAccountCreatedSubTitle,
-          onPressed: () => AuthenticationRepository.instance.screenRedirect(),
+          onPressed: () async {
+            // Refresh user data before redirecting
+            await Get.find<UserController>().fetchUserRecord();
+            AuthenticationRepository.instance.screenRedirect();
+          },
         ),
       );
     }

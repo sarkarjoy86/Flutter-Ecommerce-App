@@ -10,7 +10,7 @@ class UserModel {
   String lastName;
   final String username;
   String email;
-  final String phoneNumber;
+  String phoneNumber;
   String profilePicture;
 
   /// Constructor for UserModel.

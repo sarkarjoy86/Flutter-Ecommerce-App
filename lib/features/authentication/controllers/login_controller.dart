@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../data/repositories/authentications/authentication_repository.dart';
 import '../../../utils/constants/image_strings.dart';
@@ -11,6 +12,7 @@ import '../../../utils/exceptions/firebase_auth_exceptions.dart';
 import '../../../utils/exceptions/firebase_exceptions.dart';
 import '../../../utils/exceptions/format_exceptions.dart';
 import '../../../utils/exceptions/platform_exceptions.dart';
+import '../../personalization/controllers/user_controller.dart';
 import '../screens/login/login.dart';
 
 class LoginController extends GetxController {
@@ -25,9 +27,18 @@ class LoginController extends GetxController {
 
   @override
   void onInit() {
+    loadSavedCredentials();
+    super.onInit();
+  }
+
+  /// Load saved credentials from local storage
+  void loadSavedCredentials() {
     email.text = localStorage.read('REMEMBER_ME_EMAIL') ?? '';
     password.text = localStorage.read('REMEMBER_ME_PASSWORD') ?? '';
-    super.onInit();
+    // Set remember me checkbox if credentials exist
+    if (email.text.isNotEmpty && password.text.isNotEmpty) {
+      rememberMe.value = true;
+    }
   }
 
 
@@ -51,15 +62,23 @@ class LoginController extends GetxController {
         return;
       }
 
-      // Save Data if Remember Me is selected
+      // Handle Remember Me functionality
       if (rememberMe.value) {
+        // Save credentials if Remember Me is checked
         localStorage.write('REMEMBER_ME_EMAIL', email.text.trim());
         localStorage.write('REMEMBER_ME_PASSWORD', password.text.trim());
+      } else {
+        // Clear saved credentials if Remember Me is unchecked
+        localStorage.remove('REMEMBER_ME_EMAIL');
+        localStorage.remove('REMEMBER_ME_PASSWORD');
       }
 
       // Login user using Email & Password Authentication
       final userCredentials = await AuthenticationRepository.instance
           .loginWithEmailAndPassword(email.text.trim(), password.text.trim());
+
+      // Refresh user data after successful authentication
+      await UserController.instance.fetchUserRecord();
 
       // Remove Loader
       TFullScreenLoader.stopLoading();
@@ -108,15 +127,17 @@ class LoginController extends GetxController {
       TFullScreenLoader.openLoadingDialog(
           'Logging you out...', TImages.docerAnimation);
 
-      // Clear local storage data (Remember Me data)
-      localStorage.remove('REMEMBER_ME_EMAIL');
-      localStorage.remove('REMEMBER_ME_PASSWORD');
+      // Only clear local storage data if Remember Me is not checked
+      if (!rememberMe.value) {
+        localStorage.remove('REMEMBER_ME_EMAIL');
+        localStorage.remove('REMEMBER_ME_PASSWORD');
+        // Reset form fields only if not remembering
+        email.clear();
+        password.clear();
+      }
+      // Don't reset rememberMe.value to preserve user's preference
 
-      // Reset form fields
-      email.clear();
-      password.clear();
-      rememberMe.value = false;
-
+      await GoogleSignIn().signOut();
       // Logout user using Authentication Repository
       await AuthenticationRepository.instance.logout();
 
@@ -168,4 +189,56 @@ class LoginController extends GetxController {
         return 'Email or password is incorrect. Please check and try again.';
     }
   }
+
+  /// -- Google SignIn Authentication
+  Future<void> googleSignIn() async {
+    try {
+      // Start Loading
+      TFullScreenLoader.openLoadingDialog('Logging you in...', TImages.docerAnimation);
+
+      // Check Internet Connectivity
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        TFullScreenLoader.stopLoading();
+        TLoaders.errorSnackBar(
+          title: 'No Internet', 
+          message: 'Please check your internet connection and try again.'
+        );
+        return;
+      }
+
+      // Google Authentication
+      final userCredentials = await AuthenticationRepository.instance.signInWithGoogle();
+
+      // Check if user cancelled Google sign-in
+      if (userCredentials == null) {
+        TFullScreenLoader.stopLoading();
+        return; // User cancelled, do nothing
+      }
+
+      // Save user record to Firestore
+      await UserController.instance.saveUserRecord(userCredentials);
+
+      // Refresh user data after saving to Firestore
+      await UserController.instance.fetchUserRecord();
+
+      // Remove Loader BEFORE navigation
+      TFullScreenLoader.stopLoading();
+
+      // Wait a moment for the loader to fully close
+      await Future.delayed(const Duration(milliseconds: 300));
+
+      // Redirect after loader is closed
+      AuthenticationRepository.instance.screenRedirect();
+
+    } catch (e) {
+      // Remove Loader
+      TFullScreenLoader.stopLoading();
+      TLoaders.errorSnackBar(title: 'Google Sign-In Failed', message: e.toString());
+    }
+  }
+
+
+
 }
+
