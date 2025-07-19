@@ -32,27 +32,47 @@ class UserController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    fetchUserRecord();
+    // Don't automatically fetch on init to prevent hanging
+    // fetchUserRecord();
   }
 
 // Fetch user record
   Future<void> fetchUserRecord() async {
     try {
       profileLoading.value = true;
-      final userData = await userRepository.fetchUserDetails();
+      
+      // Add timeout to prevent hanging
+      final userData = await userRepository.fetchUserDetails().timeout(
+        const Duration(seconds: 10),
+        onTimeout: () {
+          print('User fetch timeout - using empty user model');
+          return UserModel.empty();
+        },
+      );
 
       // If user data is empty, try to create from auth data
       if (userData.id.isEmpty) {
-        await userRepository.createUserRecordFromAuth();
+        try {
+          await userRepository.createUserRecordFromAuth().timeout(
+            const Duration(seconds: 10),
+          );
 
-        // Try to fetch again after creating
-        final retryUserData = await userRepository.fetchUserDetails();
-        user.value = retryUserData;
+          // Try to fetch again after creating
+          final retryUserData = await userRepository.fetchUserDetails().timeout(
+            const Duration(seconds: 10),
+            onTimeout: () => UserModel.empty(),
+          );
+          user.value = retryUserData;
+        } catch (createError) {
+          print('Failed to create user record: $createError');
+          user.value = UserModel.empty();
+        }
       } else {
         // Update the user observable - this will trigger UI updates in Obx widgets
         user.value = userData;
       }
     } catch (e) {
+      print('Error fetching user record: $e');
       user.value = UserModel.empty();
     } finally {
       profileLoading.value = false;

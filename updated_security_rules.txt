@@ -1,0 +1,59 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Categories - Public read, Admin write
+    match /Categories/{document} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.token.admin == true;
+    }
+    
+    // Brands - Public read, Admin write
+    match /Brands/{document} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.token.admin == true;
+    }
+    
+    // Products - Public read, Admin write
+    match /Products/{document} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.token.admin == true;
+    }
+    
+    // Carts - User can read/write their own cart
+    match /Carts/{document} {
+      allow read, write: if request.auth != null && request.auth.uid == resource.data.UserId;
+      allow create: if request.auth != null && request.auth.uid == request.resource.data.UserId;
+    }
+    
+    // Wishlists - User can read/write their own wishlist
+    match /Wishlists/{document} {
+      allow read, write: if request.auth != null && request.auth.uid == resource.data.UserId;
+      allow create: if request.auth != null && request.auth.uid == request.resource.data.UserId;
+    }
+    
+    // Orders - Enhanced permissions for user order management
+    match /Orders/{document} {
+      // Users can read their own orders, Admins can read all orders
+      allow read: if request.auth != null && 
+        (request.auth.uid == resource.data.UserId || request.auth.token.admin == true);
+      
+      // Users can create orders for themselves
+      allow create: if request.auth != null && request.auth.uid == request.resource.data.UserId;
+      
+      // Users can update their own orders (limited fields only)
+      allow update: if request.auth != null && request.auth.uid == resource.data.UserId &&
+        // Only allow updating Status field and only to "cancelled"
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['Status']) &&
+        request.resource.data.Status == 'cancelled' &&
+        resource.data.Status == 'pending';
+      
+      // Admins can write/update any order (for order management)
+      allow write: if request.auth != null && request.auth.token.admin == true;
+    }
+    
+    // Users - User can read/write their own data
+    match /Users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+} 

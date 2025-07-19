@@ -6,6 +6,9 @@ class TLocalStorage {
   factory TLocalStorage() {
     return _instance;
   }
+  
+  // Static getter for instance access
+  static TLocalStorage get instance => _instance;
 
   TLocalStorage._internal();
 
